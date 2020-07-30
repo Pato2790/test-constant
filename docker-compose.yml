@@ -1,16 +1,23 @@
 version: "3.7"
 services:
 
-  frontend:
-    container_name: badi_fe
+  frontend: &frontend
     build:
       context: ./frontend
-      dockerfile: Dockerfile
-    image: badi/badi_fe
     ports:
-      - "3000:3000"
+      - "80:80"
     volumes:
-      - ./frontend:/app
+      - ./frontend:/usr/src/app
+    depends_on:
+      - "backend"
+
+  frontend-dev:
+    <<: *frontend
+    ports:
+      - "4200:4200"
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile-dev
 
   mysql:
     image: mysql:5.7
@@ -19,7 +26,7 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: testbadi
+      MYSQL_DATABASE: testconstant
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -29,16 +36,15 @@ services:
       PMA_PASSWORD: root
       PMA_ARBITRARY: 1
     ports:
-      - 8000:80
+      - 8000:8000
     depends_on:
       - mysql
 
   backend:
-    container_name: badi_be
+    container_name: constant_be
     build:
       context: ./backend
-      dockerfile: Dockerfile
-    image: badi/badi_be
+    image: constant/constant_be
     ports:
       - "5000:5000"
     volumes:

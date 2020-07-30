@@ -1,20 +1,14 @@
-const Fleet = require('../models/Fleet');
-const Flight = require('../models/Flight');
-const Seat = require('../models/Seat');
+// const Model = require('../models/Model');
+// const Model2 = require('../models/Model2');
 
 const initModel = async () => {
   
-  // Fleet - Flight Relations
-  Fleet.hasMany(Flight, { as: 'Fligth', foreignKey: 'fleetId' });
-  Flight.belongsTo(Fleet, { as: 'Fleet', foreignKey: 'fleetId' });
-  
-  // Seat - Flight Relations
-  Flight.hasMany(Seat, { as: 'Seat', foreignKey: 'flightId' });
-  Seat.belongsTo(Flight, { as: 'Flight', foreignKey: 'flightId' });
+  //  Relations
+  // Model.hasMany(Model2, { as: 'Model2', foreignKey: 'model2Id' });
+  // Model2.belongsTo(Model, { as: 'Model', foreignKey: 'modelId' });
 
-  await Fleet.sync();
-  await Flight.sync();
-  await Seat.sync();
+  // await Model.sync();
+  // await Model2.sync();
 }
 
 module.exports = initModel
