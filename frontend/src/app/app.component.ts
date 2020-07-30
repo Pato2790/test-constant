@@ -7,19 +7,4 @@ import { setHours, setMinutes } from 'date-fns';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
-  view: CalendarView = CalendarView.Week;
-
-  viewDate: Date = new Date();
-
-  events: CalendarEvent[] = [
-    {
-      title: 'No event end date',
-      start: setHours(setMinutes(new Date(), 0), 3),
-    },
-    {
-      title: 'No event end date',
-      start: setHours(setMinutes(new Date(), 0), 5),
-    },
-  ];
-}
+export class AppComponent { }
