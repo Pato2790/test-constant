@@ -1,14 +1,27 @@
-// const Model = require('../models/Model');
-// const Model2 = require('../models/Model2');
+const User = require('../models/User');
+const Meet = require('../models/Meet');
+const UserMeet = require('../models/UserMeet');
 
 const initModel = async () => {
   
   //  Relations
-  // Model.hasMany(Model2, { as: 'Model2', foreignKey: 'model2Id' });
-  // Model2.belongsTo(Model, { as: 'Model', foreignKey: 'modelId' });
+  User.belongsToMany(Meet, {
+    through: 'UserMeet',
+    as: 'user',
+    foreignKey: 'userId',
+    otherKey: 'meetId'
+  });
 
-  // await Model.sync();
-  // await Model2.sync();
+  Meet.belongsToMany(User, {
+    through: 'UserMeet',
+    as: 'meet',
+    foreignKey: 'meetId',
+    otherKey: 'userId'
+  });
+
+  await User.sync();
+  await Meet.sync();
+  await UserMeet.sync();
 }
 
 module.exports = initModel

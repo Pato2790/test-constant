@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../configs/sequelize.init');
 
-class ModelExample extends Model { }
+class Meet extends Model { }
 
-ModelExample.init(
+Meet.init(
   {
     id: {
       primaryKey: true,
@@ -11,16 +11,16 @@ ModelExample.init(
       autoIncrement: true,
       type: DataTypes.INTEGER(11),
     },
-    propExample: {
+    meetName: {
       allowNull: false,
       type: DataTypes.STRING,
     },
   },
   {
     sequelize,
-    modelName: 'ModelExample',
+    modelName: 'Meet',
     timestamps: true,
   }
 );
 
-module.exports = ModelExample;
+module.exports = Meet;
