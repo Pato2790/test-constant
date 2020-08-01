@@ -1,0 +1,63 @@
+<h1 class="title">Nueva Reunión</h1>
+<mat-card class="width-card-form">
+    <form #meetForm="ngForm" (ngSubmit)="createNewMeet(meetForm)">
+        <mat-grid-list cols="1" rowHeight="10:1">
+            <mat-grid-tile>
+                <p style="text-align: center;">
+                    Complete el formulario con los datos requeridos
+                </p>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <p>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Nombre Reunión</mat-label>
+                        <input matInput placeholder="Placeholder" name="meetName" #meetName="ngModel" ngModel required>
+                        <mat-error *ngIf="meetName.invalid">Nombre requerido</mat-error>
+                    </mat-form-field>
+                </p>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput name="meetDate" [matDatepicker]="picker" format="yyyy-MM-dd" #meetDate="ngModel" ngModel required>
+                    <mat-error *ngIf="meetDate.invalid">Fecha requerida</mat-error>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <p>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Hora Inicio</mat-label>
+                        <input matInput name="meetStart" type="time" min="09:00" max="18:00" #meetStart="ngModel"
+                            ngModel required />
+                        <mat-error *ngIf="meetStart.invalid">Hora inicio requerida</mat-error>
+                    </mat-form-field>
+                </p>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <p>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Hora Fin</mat-label>
+                        <input matInput name="meetEnd" type="time" min="09:00" max="18:00" #meetEnd="ngModel" ngModel
+                            required />
+                        <mat-error *ngIf="meetEnd.invalid">Hora fin requerida</mat-error>
+                    </mat-form-field>
+                </p>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="fill">
+                    <mat-label>Employees</mat-label>
+                    <mat-select name="meetEmployees" #meetEmployees="ngModel" multiple ngModel required>
+                        <mat-option *ngFor="let employee of employeesList" [value]="employee">{{employee.employeeName}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="meetEmployees.invalid">Al menos un empleado debe ser seleccionado</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button mat-raised-button color="primary" type="submit" [disabled]="meetForm.invalid">Crear</button>
+                <button mat-raised-button routerLink="/" color="warn">Cancelar</button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+</mat-card>

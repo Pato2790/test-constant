@@ -27,6 +27,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: testconstant
+    volumes:
+      - ./.data/db:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d:ro
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -47,7 +50,9 @@ services:
     image: constant/constant_be
     ports:
       - "5000:5000"
+      - '9229:9229'
     volumes:
       - ./backend:/app
     depends_on:
       - mysql
+    command: 'npm run debug'

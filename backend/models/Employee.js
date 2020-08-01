@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../configs/sequelize.init');
 
-class User extends Model { }
+class Employee extends Model { }
 
-User.init(
+Employee.init(
   {
     id: {
       primaryKey: true,
@@ -11,16 +11,16 @@ User.init(
       autoIncrement: true,
       type: DataTypes.INTEGER(11),
     },
-    userName: {
+    employeeName: {
       allowNull: false,
       type: DataTypes.STRING,
     },
   },
   {
     sequelize,
-    modelName: 'User',
+    modelName: 'Employee',
     timestamps: true,
   }
 );
 
-module.exports = User;
+module.exports = Employee;

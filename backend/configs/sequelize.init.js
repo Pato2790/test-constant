@@ -1,5 +1,4 @@
 const { Sequelize } = require('sequelize');
-const mysql = require('mysql');
 const [
   MYSQL_HOST,
   MYSQL_PORT,

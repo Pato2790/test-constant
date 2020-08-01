@@ -1,6 +1,6 @@
-import { WeekCalendarComponent } from './week-calendar/week-calendar.component';
-import { NewMeetComponent } from './new-meet/new-meet.component';
-import { NgModule } from '@angular/core';
+import { WeekCalendarComponent } from './components/week-calendar/week-calendar.component';
+import { NewMeetComponent } from './components/new-meet/new-meet.component';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 

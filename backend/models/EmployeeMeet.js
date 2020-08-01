@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../configs/sequelize.init');
 
-class UserMeet extends Model { }
+class EmployeeMeet extends Model { }
 
-UserMeet.init(
+EmployeeMeet.init(
   {
     id: {
       primaryKey: true,
@@ -11,7 +11,7 @@ UserMeet.init(
       autoIncrement: true,
       type: DataTypes.INTEGER(11),
     },
-    userId: {
+    employeeId: {
       allowNull: false,
       type: DataTypes.INTEGER(11)
     },
@@ -19,20 +19,24 @@ UserMeet.init(
       allowNull: false,
       type: DataTypes.INTEGER(11)
     },
-    startMeet: {
+    meetDate: {
       allowNull: false,
       type: DataTypes.DATE,
     },
-    endMeet: {
+    meetStart: {
       allowNull: false,
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
+    },
+    meetEnd: {
+      allowNull: false,
+      type: DataTypes.STRING,
     },
   },
   {
     sequelize,
-    modelName: 'UserMeet',
+    modelName: 'EmployeeMeet',
     timestamps: true,
   }
 );
 
-module.exports = UserMeet;
+module.exports = EmployeeMeet;
