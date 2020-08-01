@@ -18,19 +18,7 @@ EmployeeMeet.init(
     meetId: {
       allowNull: false,
       type: DataTypes.INTEGER(11)
-    },
-    meetDate: {
-      allowNull: false,
-      type: DataTypes.DATE,
-    },
-    meetStart: {
-      allowNull: false,
-      type: DataTypes.STRING,
-    },
-    meetEnd: {
-      allowNull: false,
-      type: DataTypes.STRING,
-    },
+    }
   },
   {
     sequelize,

@@ -7,14 +7,12 @@ const initModel = async () => {
   //  Relations
   Employee.belongsToMany(Meet, {
     through: 'EmployeeMeet',
-    as: 'employee',
     foreignKey: 'employeeId',
     otherKey: 'meetId'
   });
 
   Meet.belongsToMany(Employee, {
     through: 'EmployeeMeet',
-    as: 'meet',
     foreignKey: 'meetId',
     otherKey: 'employeeId'
   });

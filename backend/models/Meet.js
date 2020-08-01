@@ -15,6 +15,18 @@ Meet.init(
       allowNull: false,
       type: DataTypes.STRING,
     },
+    meetDate: {
+      allowNull: false,
+      type: DataTypes.DATEONLY,
+    },
+    meetStart: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    meetEnd: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize,

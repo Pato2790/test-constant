@@ -10,17 +10,17 @@ const handler = async (req, res, next) => {
     if (employeesDisponibility) {
         try {
             // Create and save the order
-            const savedMeet = await Meet.create({ meetName: meetName }, { w: 1 }, { returning: true });
-
-            console.log(savedMeet);
+            const savedMeet = await Meet.create({
+                meetName,
+                meetDate,
+                meetStart,
+                meetEnd
+            }, { w: 1 }, { returning: true });
 
             for (const employee of employees) {
                 const newEmployeeMeet = {
                     employeeId: employee.id,
                     meetId: savedMeet.id,
-                    meetDate,
-                    meetStart,
-                    meetEnd
                 }
 
                 await EmployeeMeet.create(newEmployeeMeet, { w: 1 }, { returning: true });

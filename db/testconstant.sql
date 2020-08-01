@@ -31,9 +31,6 @@ CREATE TABLE `EmployeeMeets` (
   `id` int(11) NOT NULL,
   `employeeId` int(11) NOT NULL,
   `meetId` int(11) NOT NULL,
-  `meetDate` datetime NOT NULL,
-  `meetStart` varchar(255) NOT NULL,
-  `meetEnd` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -74,6 +71,9 @@ INSERT INTO `Employees` (`id`, `employeeName`, `createdAt`, `updatedAt`) VALUES
 CREATE TABLE `Meets` (
   `id` int(11) NOT NULL,
   `meetName` varchar(255) NOT NULL,
+  `meetDate` datetime NOT NULL,
+  `meetStart` varchar(255) NOT NULL,
+  `meetEnd` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

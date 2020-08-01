@@ -1,6 +1,8 @@
+import { WeekMeets } from 'src/app/models/weekmeets';
+import { MeetService } from './../../services/meet/meet.service';
 import { Component, OnInit } from '@angular/core';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
-import { setHours, setMinutes } from 'date-fns';
+import { setHours, setMinutes, format } from 'date-fns';
 
 @Component({
   selector: 'app-week-calendar',
@@ -9,11 +11,6 @@ import { setHours, setMinutes } from 'date-fns';
 })
 export class WeekCalendarComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   view: CalendarView = CalendarView.Week;
 
   dayStartHour: number = 9;
@@ -21,15 +18,29 @@ export class WeekCalendarComponent implements OnInit {
 
   viewDate: Date = new Date();
 
-  events: CalendarEvent[] = [
-    {
-      title: 'No event end date',
-      start: setHours(setMinutes(new Date(), 0), 3),
-    },
-    {
-      title: 'No event end date',
-      start: setHours(setMinutes(new Date(), 0), 5),
-    },
-  ];
+  events: CalendarEvent[] = [];
+
+  constructor(private meetService: MeetService) { }
+
+  ngOnInit(): void {
+    this.meetService.getAllMeets().subscribe(weekMeets => this.createMeetsArray(weekMeets));
+  }
+
+  createMeetsArray(weekMeets: WeekMeets[]) {
+    const newEvents = [];
+    for (const weekMeet of weekMeets) {
+      // Obtenemos las horas y los minutos
+      const splitStartTime = weekMeet.meetStart.split(':');
+      const splitEndTime = weekMeet.meetEnd.split(':');
+
+      // Determinamos el inicio y el fin de la reunion
+      const meetStartTime = setHours(setMinutes(new Date(weekMeet.meetDate), parseInt(splitStartTime[1])), parseInt(splitStartTime[0]));
+      const meetEndTime = setHours(setMinutes(new Date(weekMeet.meetDate), parseInt(splitEndTime[1])), parseInt(splitEndTime[0]));
+
+      newEvents.push({ title: weekMeet.meetName, start: meetStartTime, end: meetEndTime })
+    }
+    this.events = newEvents;
+  }
+
 
 }
