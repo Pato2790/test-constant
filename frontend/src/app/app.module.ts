@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 // Calendar Libraries
 import { AmazingTimePickerModule } from 'amazing-time-picker';
@@ -51,6 +52,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCheckboxModule,
     AmazingTimePickerModule
   ],
   providers: [],

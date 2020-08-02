@@ -6,8 +6,8 @@ import { Meet } from '../../models/meet';
 import { WeekMeets } from 'src/app/models/weekmeets';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 
-    'Access-Control-Allow-Origin':'*'
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin': '*'
   })
 };
 

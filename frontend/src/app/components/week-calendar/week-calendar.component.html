@@ -1,3 +1,20 @@
 <h1 class="title">Meets Week Calendar</h1>
-<mwl-calendar-week-view [viewDate]="viewDate" [(events)]="events" [dayStartHour]="dayStartHour" [dayEndHour]="dayEndHour">
+
+<mat-card>
+    <h3>Filtros</h3>
+
+    <mat-form-field>
+        <mat-label>Empleados</mat-label>
+        <mat-select [formControl]="selectedEmployees" (selectionChange)="getMeetForEmployees()" multiple>
+            <mat-option *ngFor="let employee of employeesList" [value]="employee">{{employee.employeeName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <section>
+        <mat-checkbox [(ngModel)]="checked">Ver solo disponibles</mat-checkbox>
+    </section>
+</mat-card>
+
+<mwl-calendar-week-view [viewDate]="viewDate" [(events)]="events" [dayStartHour]="dayStartHour"
+    [dayEndHour]="dayEndHour">
 </mwl-calendar-week-view>
