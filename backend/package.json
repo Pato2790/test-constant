@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js",
-    "debug": "nodemon --inspect=0.0.0.0 index.js"
+    "server": "TZ=Europe/Madrid nodemon index.js"
   },
   "keywords": [],
   "author": "",

@@ -5,7 +5,7 @@ const EmployeeMeet = require('../../../models/EmployeeMeet');
 const handler = async (req, res, next) => {
     const { meetName, meetDate, meetStart, meetEnd, employees } = req.body;
 
-    const employeesDisponibility = await checkEmployeeDisponibility(employees);
+    const employeesDisponibility = await checkEmployeeDisponibility(employees, meetDate, meetStart, meetEnd);
 
     if (employeesDisponibility) {
         try {
@@ -33,6 +33,8 @@ const handler = async (req, res, next) => {
             next(err);
         }
     }
+
+    res.status(200).json('No se ha podido crear la reunion porque uno o mas participantes tienen reuniones asignadas en dicho horario');
 }
 
 module.exports = handler;

@@ -50,9 +50,7 @@ services:
     image: constant/constant_be
     ports:
       - "5000:5000"
-      - '9229:9229'
     volumes:
       - ./backend:/app
     depends_on:
       - mysql
-    command: 'npm run debug'
