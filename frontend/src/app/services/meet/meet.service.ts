@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Meet } from '../../models/meet';
 import { WeekMeets } from 'src/app/models/weekmeets';
+import { ResponseData } from 'src/app/models/response-data';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,8 +19,8 @@ export class MeetService {
 
   constructor(private http: HttpClient) { }
 
-  bookMeet(meet: Meet): Observable<string> {
-    return this.http.post<string>(environment.API_URL + 'meetManager/', meet, httpOptions);
+  bookMeet(meet: Meet): Observable<ResponseData> {
+    return this.http.post<ResponseData>(environment.API_URL + 'meetManager/', meet, httpOptions);
   }
 
   getAllMeets(): Observable<WeekMeets[]> {

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "TZ=Europe/Madrid nodemon index.js"
+    "server": "nodemon index.js "
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,8 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
     "mysql": "^2.17.1",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.3"

@@ -3,8 +3,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mainRoutes = require('./routes');
 const initDB = require('./configs/database.init');
+var momentTZ = require('moment-timezone');
 
 const app = express();
+
+momentTZ.tz.setDefault("Europe/Madrid");
 
 // Config middleware
 app.use(cors());

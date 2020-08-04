@@ -26,15 +26,15 @@ const handler = async (req, res, next) => {
                 await EmployeeMeet.create(newEmployeeMeet, { w: 1 }, { returning: true });
             }
 
-            res.status(200).json('La reunión se ha creado correctamente para todos los empleados seleccionados.');
+            res.status(200).json({ message: 'La reunión se ha creado correctamente para todos los empleados seleccionados.', created: true });
         } catch (err) {
             console.error('Server Error: ', err);
-            res.sendStatus(500).json({ msg: 'Se ha generado un problema al intentar crear la reunion.' });
+            res.sendStatus(500).json({ message: 'Se ha generado un problema al intentar crear la reunion.', created: false });
             next(err);
         }
     }
 
-    res.status(200).json('No se ha podido crear la reunion porque uno o mas participantes tienen reuniones asignadas en dicho horario');
+    res.status(200).json({ message: 'No se ha podido crear la reunion porque uno o mas participantes tienen reuniones asignadas en dicho horario', created: false });
 }
 
 module.exports = handler;

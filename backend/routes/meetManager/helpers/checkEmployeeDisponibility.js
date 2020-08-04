@@ -1,4 +1,5 @@
 const allMeetByEmployeeQuery = require('./allMeetByEmployeeQuery');
+const m = require('moment');
 
 const checkEmployeeDisponibility = async (employees, meetDate, meetStart, meetEnd) => {
 
@@ -27,23 +28,19 @@ const employeeHasMeet = (meet, meetDate, meetStart, meetEnd) => {
     const splitOldMeetStart = meet.meetStart.split(':');
     const splitOldMeetEnd = meet.meetEnd.split(':');
 
-    const newMeetStartMilisecond = new Date(new Date(meetDate).setHours(splitNewMeetStart[0])).setMinutes(splitNewMeetStart[1]);
-    const newMeetEndMilisecond = new Date(new Date(meetDate).setHours(splitNewMeetEnd[0])).setMinutes(splitNewMeetEnd[1]);
+    const newMeetStart = m(meetDate).hours(parseInt(splitNewMeetStart[0])).minutes(parseInt(splitNewMeetStart[1]));
+    const newMeetEnd = m(meetDate).hours(parseInt(splitNewMeetEnd[0])).minutes(parseInt(splitNewMeetEnd[1]));
 
-    const oldMeetStartMilisecond = new Date(new Date(meet.meetDate).setHours(splitOldMeetStart[0])).setMinutes(splitOldMeetStart[1]);
-    const oldMeetEndMilisecond = new Date(new Date(meet.meetDate).setHours(splitOldMeetEnd[0])).setMinutes(splitOldMeetEnd[1]);
+    const oldMeetStart = m(meet.meetDate).hours(parseInt(splitOldMeetStart[0])).minutes(parseInt(splitOldMeetStart[1]));;
+    const oldMeetEnd = m(meet.meetDate).hours(parseInt(splitOldMeetEnd[0])).minutes(parseInt(splitOldMeetEnd[1]));;
 
-    console.log(meetDate);
-    console.log(meet.meetDate);
+    console.log(newMeetStart, newMeetEnd, oldMeetStart, oldMeetEnd, oldMeetStart.isBetween(newMeetStart, newMeetEnd), oldMeetEnd.isBetween(newMeetStart, newMeetEnd), newMeetStart.isBetween(oldMeetStart, oldMeetEnd));
 
-    console.log(newMeetStartMilisecond);
-    console.log(newMeetEndMilisecond);
-    console.log(oldMeetStartMilisecond);
-    console.log(oldMeetEndMilisecond);
-
-    if ((oldMeetStartMilisecond >= newMeetStartMilisecond && newMeetStartMilisecond <= oldMeetEndMilisecond) || 
-    (oldMeetStartMilisecond >= newMeetEndMilisecond && newMeetEndMilisecond <= oldMeetEndMilisecond)) {
-        return true;
+    if (oldMeetStart.isBetween(newMeetStart, newMeetEnd) ||
+        oldMeetEnd.isBetween(newMeetStart, newMeetEnd) ||
+        newMeetStart.isBetween(oldMeetStart, oldMeetEnd)
+    ) {
+        return true
     }
 
     return false;
