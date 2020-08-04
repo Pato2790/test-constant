@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql
--- Tiempo de generación: 01-08-2020 a las 15:27:07
+-- Tiempo de generación: 04-08-2020 a las 13:22:13
 -- Versión del servidor: 5.7.31
--- Versión de PHP: 7.4.6
+-- Versión de PHP: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -71,7 +71,7 @@ INSERT INTO `Employees` (`id`, `employeeName`, `createdAt`, `updatedAt`) VALUES
 CREATE TABLE `Meets` (
   `id` int(11) NOT NULL,
   `meetName` varchar(255) NOT NULL,
-  `meetDate` datetime NOT NULL,
+  `meetDate` date NOT NULL,
   `meetStart` varchar(255) NOT NULL,
   `meetEnd` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,

@@ -42,7 +42,7 @@ export class WeekCalendarComponent implements OnInit {
   // Metodos auxiliares
   formatMeetsEmployees(meetsEmployees: Array<any>) {
     const allEmployeesMeets = meetsEmployees.reduce((acc, value) => {
-       return acc.concat(value.Meets);
+      return acc.concat(value.Meets);
     }, []);
 
     this.createMeetsArray(allEmployeesMeets);
@@ -72,6 +72,5 @@ export class WeekCalendarComponent implements OnInit {
     }
     this.events = newEvents;
   }
-
 
 }
