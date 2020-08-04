@@ -32,7 +32,11 @@ export class WeekCalendarComponent implements OnInit {
   }
 
   getMeetForEmployees() {
-    this.employeeService.getAllMeetsByEmployee(this.selectedEmployees.value).subscribe(meetsEmployees => this.formatMeetsEmployees(meetsEmployees));
+    if (this.selectedEmployees.value.length > 0) {
+      this.employeeService.getAllMeetsByEmployee(this.selectedEmployees.value).subscribe(meetsEmployees => this.formatMeetsEmployees(meetsEmployees));
+    } else {
+      this.meetService.getAllMeets().subscribe(weekMeets => this.createMeetsArray(weekMeets));
+    }
   }
 
   // Metodos auxiliares

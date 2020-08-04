@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 // Calendar Libraries
@@ -58,6 +59,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     MatNativeDateModule,
     MatCheckboxModule,
     MatDialogModule,
+    FlexLayoutModule,
     AmazingTimePickerModule
   ],
   providers: [],
